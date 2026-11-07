@@ -5,19 +5,25 @@
   --muted: #5d6b7e;
   --border: #dbe2ea;
   --border-strong: #c3ccd8;
-  --primary: #2563eb;
-  --primary-soft: #e8f0fe;
-  --success: #15803d;
-  --success-hover: #116c33;
+  /* Tricolour palette. Saffron is too light for white text, so it is used for accents and
+     borders only; navy carries the buttons and green carries Pay. */
+  --saffron: #ff9933;
+  --saffron-deep: #e67300;
+  --primary: #1c3f94;
+  --primary-hover: #153277;
+  --primary-soft: #e8edf9;
+  --navy-deep: #0c1a45;
+  --success: #138808;
+  --success-hover: #0e6f06;
   --danger: #dc2626;
   --danger-soft: #fdecec;
   --warning: #b45309;
   --warning-soft: #fff4dc;
   --ok-soft: #e7f6ec;
-  --sidebar: #142033;
-  --sidebar-hover: #1f2f47;
-  --sidebar-active: #2a3d5a;
-  --sidebar-ink: #c6d1e0;
+  --sidebar: #101f4f;
+  --sidebar-hover: #1a2d68;
+  --sidebar-active: #243a7c;
+  --sidebar-ink: #c9d3ee;
   --radius: 10px;
   --shadow: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 8%);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -205,7 +211,7 @@ code,
 }
 
 .btn.primary:hover:not(:disabled) {
-  background: #1d5bd6;
+  background: var(--primary-hover);
 }
 
 .btn.success {
@@ -388,8 +394,8 @@ code,
   height: 38px;
   flex: none;
   border-radius: 10px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--saffron);
+  color: var(--navy-deep);
 }
 
 .brand-name {
@@ -442,7 +448,7 @@ code,
 .sidebar li button.active {
   background: var(--sidebar-active);
   color: #fff;
-  box-shadow: inset 3px 0 0 #60a5fa;
+  box-shadow: inset 4px 0 0 var(--saffron);
 }
 
 .sidebar-foot {
@@ -752,7 +758,7 @@ code,
   position: absolute;
   left: 16px;
   top: 16px;
-  color: var(--primary);
+  color: var(--saffron-deep);
   pointer-events: none;
 }
 
@@ -767,8 +773,8 @@ code,
 }
 
 .item-search input:focus {
-  border-color: var(--primary);
-  outline: 3px solid rgb(37 99 235 / 18%);
+  border-color: var(--saffron-deep);
+  outline: 3px solid rgb(255 153 51 / 35%);
 }
 
 .item-search-results {
@@ -1003,7 +1009,7 @@ code,
   flex-direction: column;
   padding: 14px 16px;
   border-radius: 10px;
-  background: #0f1b2e;
+  background: var(--navy-deep);
   color: #fff;
 }
 
@@ -1073,7 +1079,7 @@ code,
   align-items: center;
   padding: 14px;
   border-radius: 12px;
-  background: #0f1b2e;
+  background: var(--navy-deep);
   color: #fff;
 }
 

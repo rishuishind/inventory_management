@@ -1,10 +1,11 @@
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
+import { DatabaseSync } from 'node:sqlite'
 import * as XLSX from 'xlsx'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { DEFAULT_SETTINGS, type ItemInput, type Settings } from '@shared/types'
-import { type DB, openDatabase } from '../../src/main/db/database'
+import { type DB, openDatabase, SCHEMA_VERSION, schemaVersion } from '../../src/main/db/database'
 import { backupDatabase, inspectBackup } from '../../src/main/services/backup'
 import { writeWorkbook } from '../../src/main/services/exporter'
 import { cancelBill, createBill, getBill, lastBill, listBills } from '../../src/main/services/bills'
@@ -56,6 +57,32 @@ beforeEach(() => {
 afterEach(() => {
   db.close()
   fs.rmSync(dir, { recursive: true, force: true })
+})
+
+describe('database file', () => {
+  it('keeps every item, bill and stock level when the app is closed and reopened (as after an update)', () => {
+    const lays = saveItem(db, item())
+    createBill(db, { lines: [{ itemId: lays.id, qty: 3, price: 2000 }], discount: 0, paymentMode: 'cash', tendered: null }, settings, day)
+    saveSettings(db, { shopName: 'Sharma Canteen' })
+    db.close()
+
+    db = openDatabase(path.join(dir, 'canteen.db'))
+    expect(schemaVersion(db)).toBe(SCHEMA_VERSION)
+    expect(getItem(db, lays.id)).toMatchObject({ name: 'Lays Classic 50g', stock: 7 })
+    expect(lastBill(db)).toMatchObject({ billNo: '2026-27/1', total: 6000 })
+    expect(getSettings(db).shopName).toBe('Sharma Canteen')
+    // The next bill continues the numbering instead of starting again.
+    const next = createBill(db, { lines: [{ itemId: lays.id, qty: 1, price: 2000 }], discount: 0, paymentMode: 'upi', tendered: null }, settings, day)
+    expect(next.billNo).toBe('2026-27/2')
+  })
+
+  it('refuses a database made by a newer version instead of damaging it', () => {
+    db.exec(`PRAGMA user_version = ${SCHEMA_VERSION + 1}`)
+    db.close()
+    expect(() => openDatabase(path.join(dir, 'canteen.db'))).toThrow(/newer version/)
+    // afterEach closes `db`: give it something open.
+    db = new DatabaseSync(':memory:')
+  })
 })
 
 describe('items', () => {

@@ -6,10 +6,10 @@ import { Modal } from '../../components/Modal'
 
 const FIELDS: { field: ImportField; label: string; required?: boolean }[] = [
   { field: 'name', label: 'Item name', required: true },
-  { field: 'salePrice', label: 'Sale price (₹)', required: true },
   { field: 'barcode', label: 'Barcode' },
-  { field: 'gstRate', label: 'GST %' },
   { field: 'costPrice', label: 'Cost price (₹)' },
+  { field: 'salePrice', label: 'Sale price (₹)', required: true },
+  { field: 'gstRate', label: 'GST %' },
   { field: 'hsn', label: 'HSN code' },
   { field: 'category', label: 'Category' },
   { field: 'unit', label: 'Unit' },

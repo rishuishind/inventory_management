@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="112" fill="#2563eb"/>
+  <rect width="512" height="512" rx="112" fill="#1c3f94"/>
   <path d="M152 92h208a22 22 0 0 1 22 22v318l-38-26-38 26-38-26-38 26-38-26-38 26-38-26-24 16V114a22 22 0 0 1 22-22z" fill="#ffffff"/>
-  <g fill="#1e3a8a">
+  <g fill="#0c1a45">
     <rect x="178" y="138" width="12" height="122"/>
     <rect x="198" y="138" width="6" height="122"/>
     <rect x="212" y="138" width="16" height="122"/>
@@ -12,7 +12,7 @@
     <rect x="310" y="138" width="12" height="122"/>
     <rect x="330" y="138" width="6" height="122"/>
   </g>
-  <rect x="148" y="190" width="216" height="10" rx="5" fill="#ef4444"/>
-  <rect x="178" y="296" width="158" height="18" rx="9" fill="#93b4f7"/>
-  <rect x="178" y="334" width="104" height="18" rx="9" fill="#93b4f7"/>
+  <rect x="148" y="190" width="216" height="10" rx="5" fill="#ff9933"/>
+  <rect x="178" y="296" width="158" height="18" rx="9" fill="#b7c4e8"/>
+  <rect x="178" y="334" width="104" height="18" rx="9" fill="#b7c4e8"/>
 </svg>

@@ -112,6 +112,9 @@ npm run dist:win     # builds dist/Canteen-POS-Setup-<version>.exe (works from a
 
 Bump `version` in `package.json` before building an update.
 
+Using an AI coding agent? Point it at `AGENTS.md` (Claude Code reads `CLAUDE.md`, which imports it).
+It has the architecture, the rules that must not be broken and how to test safely.
+
 - Electron 45 + React 19 + TypeScript, built with electron-vite.
 - SQLite through Node's built-in `node:sqlite` (part of Electron), so there are no native modules
   to compile and the Windows installer can be built on a Mac.

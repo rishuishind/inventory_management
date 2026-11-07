@@ -259,7 +259,7 @@ export interface Settings {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
-  shopName: 'My Canteen',
+  shopName: 'Siddharth Canteen Store',
   shopAddress: '',
   shopPhone: '',
   gstin: '',

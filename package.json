@@ -1,7 +1,7 @@
 {
   "name": "canteen-pos",
   "productName": "Canteen POS",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "description": "Billing and inventory for the canteen",
   "author": "Canteen POS",

@@ -213,6 +213,10 @@ export function ItemFormDialog({ item, initialBarcode, hideOpeningStock, onSaved
           <input ref={nameRef} value={form.name} onChange={field('name')} placeholder="e.g. Lays Classic 50g" />
         </label>
         <label>
+          Cost price (₹)
+          <input value={form.costPrice} onChange={field('costPrice')} inputMode="decimal" placeholder="Buying price" />
+        </label>
+        <label>
           Sale price (₹) *
           <input value={form.salePrice} onChange={field('salePrice')} inputMode="decimal" placeholder="0.00" />
         </label>
@@ -234,6 +238,10 @@ export function ItemFormDialog({ item, initialBarcode, hideOpeningStock, onSaved
           </div>
         </label>
         <label>
+          HSN code
+          <input value={form.hsn} onChange={field('hsn')} placeholder="Optional" />
+        </label>
+        <label>
           Category
           <input value={form.category} onChange={field('category')} list="item-categories" placeholder="e.g. Snacks" />
           <datalist id="item-categories">
@@ -250,14 +258,6 @@ export function ItemFormDialog({ item, initialBarcode, hideOpeningStock, onSaved
               <option key={u} value={u} />
             ))}
           </datalist>
-        </label>
-        <label>
-          Cost price (₹)
-          <input value={form.costPrice} onChange={field('costPrice')} inputMode="decimal" placeholder="Buying price" />
-        </label>
-        <label>
-          HSN code
-          <input value={form.hsn} onChange={field('hsn')} placeholder="Optional" />
         </label>
         <label className="check span-2">
           <input type="checkbox" checked={form.trackStock} onChange={field('trackStock')} />
