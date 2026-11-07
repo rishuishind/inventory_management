@@ -1,0 +1,30 @@
+appId: com.canteenpos.app
+productName: Canteen POS
+copyright: Copyright © 2026
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**
+  - package.json
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.png
+  artifactName: Canteen-POS-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Canteen POS
+  runAfterFinish: true
+  # Uninstalling must never delete the shop's bills and items.
+  deleteAppDataOnUninstall: false
+mac:
+  target: dir
+  icon: build/icon.png
+# No auto-update server: installers are copied to the shop PC by hand.
+publish: null
